@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.vue.dao.ListDao">
+<!--    查询所有用户-->
+    <select id="findAll" resultMap="listResult">SELECT * FROM list</select>
+    <!--    通过name查询用户-->
+    <select id="queryName" resultMap="listResult">SELECT * FROM list where name = #{name}</select>
+    <resultMap id="listResult" type="com.example.vue.domain.List">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="birthday" property="birthday"/>
+        <result column="address" property="address"/>
+    </resultMap>
+  <!--  <select id="findAll" resultType="List" parameterType="List">
+        SELECT * FROM list
+    </select>-->
+
+    <insert id="insertList" parameterType="List">
+        insert into list(name,sex,age,birthday,address) values (#{name},#{sex},#{age},#{birthday},#{address})
+    </insert>
+
+    <delete id="deleteList" parameterType="List">
+        delete from list where id = #{id}
+    </delete>
+
+<!--    <select id="queryAge" resultType="listResult">SELECT * from </select>-->
+
+
+
+</mapper>
