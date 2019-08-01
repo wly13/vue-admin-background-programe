@@ -2,7 +2,6 @@ package com.example.vue.controller;
 
 import com.example.vue.domain.User;
 import com.example.vue.service.UserService;
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

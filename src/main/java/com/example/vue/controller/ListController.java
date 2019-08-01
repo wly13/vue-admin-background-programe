@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@RestController //控制器注解
+@RestController //控制器注解 表示所有数据都以json格式返回
 @CrossOrigin  //跨域注解
 public class ListController {
-    @Autowired //自动导入某个bean
+    @Autowired //自动导入某个bean/domain
     private ListService listService;
 
     @RequestMapping("api/list") //路由注解
