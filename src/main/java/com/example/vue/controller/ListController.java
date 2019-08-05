@@ -31,7 +31,7 @@ public class ListController {
     }
 
     @RequestMapping(value = "api/addList", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public int  addList( @RequestBody Map<String, String> data ) {
+    public int addList( @RequestBody Map<String, String> data ) {
         com.example.vue.domain.List list = new com.example.vue.domain.List();
         String name = data.get("name");
         String sex = Integer.parseInt(data.get("sex")) == 0 ? "女" : "男";
@@ -46,18 +46,23 @@ public class ListController {
         return listService.addList(list);
     }
 
-    @RequestMapping(value = "api/delList",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "api/delList", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 
-    public int delList(@RequestBody Map<String,String> data){
+    public int delList( @RequestBody Map<String, String> data ) {
         int id = Integer.parseInt(data.get("id"));
         System.out.println(id);
         int num = listService.delList(id);
         System.out.println(num);
         return num;
     }
-//    @RequestMapping(value = "api/findAge",method = RequestMethod.POST,produces = "json/application;charset=UTF-8")
 
-//    public com.example.vue.domain.List findAge    (){
-//
-//    }
+    @RequestMapping(value = "api/pagingQuery", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public List<com.example.vue.domain.List> pagingQuery( @RequestBody Map<String, String> data ) {
+        int start = Integer.parseInt(data.get("start"));
+        int pageSize = Integer.parseInt(data.get("pageSize"));
+        start = (start - 1) * pageSize;//start - 1;从数据库的0开始检索
+//        System.out.println(start);
+//        System.out.println(pageSize);
+        return listService.pagingQuery(start, pageSize);
+    }
 }

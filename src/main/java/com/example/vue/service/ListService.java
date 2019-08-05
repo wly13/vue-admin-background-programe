@@ -12,4 +12,5 @@ public interface ListService {
     List<com.example.vue.domain.List> queryByName(String name);
     int addList( com.example.vue.domain.List list );
     int delList(int id);
+    List<com.example.vue.domain.List> pagingQuery(int start,int pageSize);
 }

@@ -26,4 +26,8 @@ public class ListServiceImpl implements ListService {
     public int delList(int id){
         return listDao.deleteList(id);
     }
+    public List<com.example.vue.domain.List> pagingQuery(int start,int pageSize){
+        return listDao.pagingQuery(start,pageSize);
+    }
+
 }
